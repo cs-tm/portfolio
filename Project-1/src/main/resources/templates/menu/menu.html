@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>勤怠管理システム ー メインメニュー</title>
+	</head>
+	<body>
+		<A>【メインメニュー】</A>
+		<br>
+		<br>&nbsp;
+		<A>照会メニュー</A>
+		<br>
+		<form action="/empRef" method="post">
+			&nbsp;&nbsp;<input type="submit" name="empRef" value="社員情報照会">
+		</form>
+		<br>
+		<form action="/attRef" method="post">
+			&nbsp;&nbsp;<input type="submit" name="attRef" value="勤務状況照会">
+		</form>
+		<br>
+		<br>&nbsp;
+		<A>登録メニュー</A>
+		<br>
+		<form action="/attReg" method="post">
+			&nbsp;&nbsp;<input type="submit" name="attReg" value="勤怠登録">
+		</form>
+		<br>
+		<br>
+	</body>
+</html>

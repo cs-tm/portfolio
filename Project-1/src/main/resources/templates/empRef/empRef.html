@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>社員情報照会</title>
+	</head>
+	<body>
+		<h1>社員情報照会</h1>
+		<form action="#" th:action="@{/empRefSearch}" th:object="${form}" method="post">
+		<p>社員コード：<input type="text" class="form-control" id="inputtext1" name="code" th:field="*{code}" /></p>
+		<p><input type="submit" name="search" value="検索"></p>
+		<hr>
+		<p>社員名：<label th:text="${name}"></label></p>
+		<p>年齢：<label th:text="${age}"></label></p>
+		<p>住所：<label th:text="${address}"></label></p>
+		<p>役職：<label th:text="${post}"></label></p>
+		<p th:text="${msg}"></p>
+		<span th:if="${#fields.hasErrors('code')}"th:errors="*{code}">ErrorMessage</span>
+		</form>
+	</body>
+</html>

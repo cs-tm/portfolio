@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.AttendanceRepository">
+	
+	<select id="findByYm" resultType="com.example.demo.entity.AttendanceEntity">
+		SELECT
+			emp_code,
+			attendance_ym,
+			attendance_date,
+			going_time,
+			leaving_time,
+			SUBSTR(break_time, 1,2) || ':' || SUBSTR(break_time , 3,2) AS break_time,
+			attendance_div,
+			created_time,
+			updated_time
+		FROM
+			lg.attendance
+		WHERE
+			emp_code = #{code} AND attendance_ym = #{ym};
+	</select>
+	
+	<select id="findByYmd" resultType="com.example.demo.entity.AttendanceEntity">
+		SELECT
+			emp_code,
+			attendance_ym,
+			attendance_date,
+			going_time,
+			leaving_time,
+			SUBSTR(break_time, 1,2) || ':' || SUBSTR(break_time , 3,2) AS break_time,
+			attendance_div,
+			created_time,
+			updated_time
+		FROM
+			lg.attendance
+		WHERE
+			emp_code = #{code} AND attendance_ym = #{ym} AND attendance_date = #{date};
+	</select>
+	
+	<insert id = "entry">
+		INSERT INTO lg.attendance(
+			emp_code,
+			attendance_ym,
+			attendance_date,
+			going_time,
+			leaving_time,
+			break_time,
+			attendance_div,
+			created_time,
+			updated_time
+			)
+		VALUES(
+			#{emp_code},
+			#{attendance_ym},
+			#{attendance_date},
+			#{going_time},
+			#{leaving_time},
+			#{break_time},
+			#{attendance_div},
+			#{created_time},
+			#{updated_time}
+			);
+	</insert>
+</mapper>

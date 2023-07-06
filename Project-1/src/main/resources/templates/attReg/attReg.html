@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>勤怠登録</title>
+	</head>
+	<body>
+		<h1>勤怠登録</h1>
+		<form action="#" th:action="@{/attRegEntry}" th:object="${form}" method="post">
+		<p>社員コード：<input type="text" class="form-control" id="inputtext1" name="empCode" th:field="*{empCode}" /></p>
+		<p>対象年月日：<input type="text" class="form-control" id="inputtext2" name="attendanceYmd" th:field="*{attendanceYmd}" /></p>
+		<p>出社時刻：<input type="text" class="form-control" id="inputtext3" name="goingtimeH" th:field="*{goingtimeH}" />時</p>
+		<p><input type="text" class="form-control" id="inputtext4" name="goingtimeM" th:field="*{goingtimeM}" />分</p>
+		<p>退社時刻：<input type="text" class="form-control" id="inputtext5" name="leavingtimeH" th:field="*{leavingtimeH}" />時</p>
+		<p><input type="text" class="form-control" id="inputtext6" name="leavingtimeM" th:field="*{leavingtimeM}" />分</p>
+		<p>休憩時間：<input type="text" class="form-control" id="inputtext7" name="breaktimeH" th:field="*{breaktimeH}" />時間</p>
+		<p><input type="text" class="form-control" id="inputtext8" name="breaktimeM" th:field="*{breaktimeM}" />分</p>
+		<p>区分：<select id="attendanceDiv" name="attendanceDiv">
+			<option th:each="divEl:*{divList}" th:value="${divEl.divCode}"
+			th:text="${divEl.divName}" th:selected="${divEl.divCode} == ${selectedDiv}"></option>
+		</select>
+		</p>
+		<p><input type="submit" name="entry" value="登録"></p>
+		<hr>
+		<p th:if="${#fields.hasErrors('empCode')}"th:errors="*{empCode}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('attendanceYmd')}"th:errors="*{attendanceYmd}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('goingtimeH')}"th:errors="*{goingtimeH}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('goingtimeM')}"th:errors="*{goingtimeM}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('leavingtimeH')}"th:errors="*{leavingtimeH}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('leavingtimeM')}"th:errors="*{leavingtimeM}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('breaktimeH')}"th:errors="*{breaktimeH}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('breaktimeM')}"th:errors="*{breaktimeM}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('attendanceDiv')}"th:errors="*{attendanceDiv}">ErrorMessage</p>
+		<p th:text="${msg}"></p>
+		</form>
+	</body>
+</html>

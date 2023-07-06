@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>勤怠状況照会</title>
+	</head>
+	<body>
+		<h1>勤怠状況照会</h1>
+		<form action="#" th:action="@{/attRefSearch}" th:object="${form}" method="post">
+		<p>社員コード：<input type="text" class="form-control" id="inputtext1" name="code" th:field="*{code}" /></p>
+		<p>対象年月：<input type="text" class="form-control" id="inputtext2" name="ym" th:field="*{ym}" /></p>
+		<p><input type="submit" name="search" value="検索"></p>
+		<hr>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>年月日</th>
+					<th>曜日</th>
+					<th>出社時刻</th>
+					<th>退社時刻</th>
+					<th>休憩時間</th>
+					<th>区分</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="list:${attRefList}" th:object="${list}">
+					<td th:text="*{attendance_date}"></td>
+					<td th:text="*{dayoftheweek}"></td>
+					<td th:text="*{going_time}"></td>
+					<td th:text="*{leaving_time}"></td>
+					<td th:text="*{break_time}"></td>
+					<td th:text="*{attendance_div}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<p th:if="${#fields.hasErrors('code')}"th:errors="*{code}">ErrorMessage</p>
+		<p th:if="${#fields.hasErrors('ym')}"th:errors="*{ym}">ErrorMessage</p>
+		<p th:text="${msg}"></p>
+		</form>
+	</body>
+</html>

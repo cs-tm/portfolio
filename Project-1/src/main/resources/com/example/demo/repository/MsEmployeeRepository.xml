@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.MsEmployeeRepository">
+	<select id="findById" resultType="com.example.demo.entity.MsEmployee">
+		SELECT
+			emp_code,
+			emp_name,
+			emp_age,
+			emp_address,
+			emp_post,
+			created_time,
+			updated_time
+		FROM
+			lg.ms_employee
+		WHERE
+			emp_code = #{code};
+	</select>
+	
+	<select id="findByAll" resultType="com.example.demo.entity.MsEmployee">
+		SELECT
+			emp_code,
+			emp_name,
+			emp_age,
+			emp_address,
+			emp_post,
+			created_time,
+			updated_time
+		FROM
+			lg.ms_employee
+	</select>
+</mapper>
